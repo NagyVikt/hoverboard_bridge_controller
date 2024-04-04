@@ -648,12 +648,12 @@ private:
         // Update the desired RPMs to the new values
         desired_rpm_left_ = new_desired_rpm_left;
         desired_rpm_right_ = new_desired_rpm_right;
-
+/*
         // Log the calculated desired RPMs for both wheels
         std::ostringstream calc_rpm;
         calc_rpm << "Calculated desired RPMs - Left: " << desired_rpm_left_ << ", Right: " << desired_rpm_right_;
         logInfo(calc_rpm.str());
-
+*/
         // Update the last cmd_vel command values
         last_linear_velocity_ = new_linear_velocity;
         last_angular_velocity_ = new_angular_velocity;
