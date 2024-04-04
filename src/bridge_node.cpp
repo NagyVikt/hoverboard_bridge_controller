@@ -529,8 +529,8 @@ private:
         double v_left = 0;
         double v_right = 0;     
 
-        if (std::abs(angular_velocity) > Turn_on_Spot)       //  turn around in palcae
-        {   /*
+        if (std::abs(linear_velocity) < LINEAR_VELOCITY_THRESHOLD  &&  std::abs(angular_velocity) > ANGULAR_VELOCITY_THRESHOLD )         //  turn around in palcae
+        {   
             if ( !BoolTturnsOnTheSpot )
             {
                 desired_rpm_left = 0;
@@ -559,7 +559,7 @@ private:
 
                 error_left_RPM = desired_rpm_left - actual_RPM_L;
                 error_right_RPM = desired_rpm_right - actual_RPM_R;
-            }    */    
+            }    
         }
         else
         {
