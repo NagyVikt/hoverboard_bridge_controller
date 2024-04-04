@@ -633,28 +633,32 @@ private:
     void cmdVelCallback(const geometry_msgs::msg::Twist::SharedPtr msg) {
         new_linear_velocity = msg->linear.x;
         new_angular_velocity = msg->angular.z;
-
-        // Log the received cmd_vel message
-        std::ostringstream received_cmd;
-        received_cmd << "Received cmd_vel - Linear: " << new_linear_velocity << ", Angular: " << new_angular_velocity;
-        logInfo(received_cmd.str());
-
+            
         // Only calculate new desired RPMs if the vehicle hasn't reached a stable speed
         calculateDesiredRPM(new_linear_velocity, new_angular_velocity, new_desired_rpm_left, new_desired_rpm_right);
+
+        //    Calculate the incremental change needed for each wheel
+        //increment_left = (new_desired_rpm_left - desired_rpm_left_) * kP;
+        //increment_right = (new_desired_rpm_right - desired_rpm_right_) * kP;
+
+        // Calculate the incremental change needed for each wheel
+       // increment_left = (new_desired_rpm_left - desired_rpm_left_) * kP;
+       // increment_right = (new_desired_rpm_right - desired_rpm_right_) * kP;
+
+        // Apply the incremental change to the current PWM values
+
+      //  desired_pwmL += increment_left;
+      //  desired_pwmR += increment_right;
 
         // Update the desired RPMs to the new values
         desired_rpm_left_ = new_desired_rpm_left;
         desired_rpm_right_ = new_desired_rpm_right;
 
-        // Log the calculated desired RPMs for both wheels
-        std::ostringstream calc_rpm;
-        calc_rpm << "Calculated desired RPMs - Left: " << desired_rpm_left_ << ", Right: " << desired_rpm_right_;
-        logInfo(calc_rpm.str());
-
         // Update the last cmd_vel command values
         last_linear_velocity_ = new_linear_velocity;
         last_angular_velocity_ = new_angular_velocity;
     }
+
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr
         cmd_vel_subscriber_;
     rclcpp::Subscription<std_msgs::msg::String>::SharedPtr feedback_subscriber_;
