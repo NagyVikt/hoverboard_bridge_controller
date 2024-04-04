@@ -448,7 +448,7 @@ private:
 
             intDesired_pwmL = pwm_left;
             intDesired_pwmR = pwm_right;
-
+/*
             if (pwm_left != 0 || pwm_right != 0) {
                 // Log before clamping PWM values
                 std::ostringstream log_stream_before_clamp;
@@ -457,12 +457,12 @@ private:
                 //RCLCPP_INFO(this->get_logger(), "%s", log_message_before_clamp.c_str()); // ROS console logging
                 logInfo(log_message_before_clamp); // File logging
             }
-
+*/
 
             // Clamping PWM values
             intDesired_pwmL = std::min(std::max(intDesired_pwmL, MIN_PWM), MAX_PWM);
             intDesired_pwmR = std::min(std::max(intDesired_pwmR, MIN_PWM), MAX_PWM);
-
+/*
             if (pwm_left != 0 || pwm_right != 0) {
                 // Log after clamping PWM values
                 std::ostringstream log_stream_after_clamp;
@@ -470,13 +470,15 @@ private:
                 std::string log_message_after_clamp = log_stream_after_clamp.str();
                 //RCLCPP_INFO(this->get_logger(), "%s", log_message_after_clamp.c_str()); // ROS console logging
                 logInfo(log_message_after_clamp); // File logging
-            }     
+            }    
+            */
 
 
             if(new_linear_velocity != 0.0 || actual_RPM_L !=0 ||actual_RPM_R!=0 || pwm_left!=0 || pwm_right!=0 ||  error_left_RPM!=0 ||error_right_RPM!=0 ) {
                 // Format the log message first
                 std::ostringstream log_stream;
                 log_stream << std::left << std::setw(10) << "Li_vel" << std::setw(5) << new_linear_velocity
+                            << ", Angular: " << new_angular_velocity
                             << std::setw(10) << "D_rpm" << std::setw(5) << desired_rpm_left_ << " " << std::setw(5) << desired_rpm_right_
                             << std::setw(10) << "R_rpm" << std::setw(5) << actual_RPM_L << " " << std::setw(5) << actual_RPM_R
                             << std::setw(10) << "pwm" << std::setw(5) << pwm_left << " " << std::setw(5) << pwm_right
@@ -635,10 +637,11 @@ private:
         new_angular_velocity = msg->angular.z;
 
         // Log the received cmd_vel message
+        /*
         std::ostringstream received_cmd;
         received_cmd << "Received cmd_vel - Linear: " << new_linear_velocity << ", Angular: " << new_angular_velocity;
         logInfo(received_cmd.str());
-
+*/
         // Only calculate new desired RPMs if the vehicle hasn't reached a stable speed
         calculateDesiredRPM(new_linear_velocity, new_angular_velocity, new_desired_rpm_left, new_desired_rpm_right);
 
