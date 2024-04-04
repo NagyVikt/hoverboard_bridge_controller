@@ -576,11 +576,11 @@ private:
             
             if ( std::abs(linear_velocity) > LINEAR_VELOCITY_THRESHOLD )
             {
-                //v_left = linear_velocity - ((angular_velocity /( 1 / linear_velocity)) * wheel_base_width_ / 2.0);
-                //v_right = linear_velocity + ((angular_velocity /( 1 / linear_velocity)) * wheel_base_width_ / 2.0);
+                v_left = linear_velocity - ((angular_velocity /( 1 / linear_velocity)) * wheel_base_width_ / 2.0);
+                v_right = linear_velocity + ((angular_velocity /( 1 / linear_velocity)) * wheel_base_width_ / 2.0);
 
-                v_left = linear_velocity - (angular_velocity * wheel_base_width_ / 2.0);
-                v_right = linear_velocity + (angular_velocity * wheel_base_width_ / 2.0);
+                //v_left = linear_velocity - (angular_velocity * wheel_base_width_ / 2.0);
+                //v_right = linear_velocity + (angular_velocity * wheel_base_width_ / 2.0);
 
                 if (linear_velocity > LINEAR_VELOCITY_THRESHOLD )
                 {
