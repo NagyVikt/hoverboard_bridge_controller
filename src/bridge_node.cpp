@@ -220,7 +220,7 @@ private:
     double new_angular_velocity;
     const int MIN_PWM = -500;  // Adjust this value based on your hardware limits
     const int MAX_PWM = 500;   // Adjust this value based on your hardware limits
-    const int turn_on_spot_speed_RPM = 15; // RPM
+    const int turn_on_spot_speed_RPM = 11; // RPM
 
     int intDesired_pwmL = 0;
     int intDesired_pwmR = 0;
@@ -477,8 +477,8 @@ private:
             if(new_linear_velocity != 0.0 || actual_RPM_L !=0 ||actual_RPM_R!=0 || pwm_left!=0 || pwm_right!=0 ||  error_left_RPM!=0 ||error_right_RPM!=0 ) {
                 // Format the log message first
                 std::ostringstream log_stream;
-                log_stream << std::left << std::setw(10) << " Li_vel" << std::setw(5) << new_linear_velocity
-                            << std::left << std::setw(10) << " Angular" << std::setw(5) << new_angular_velocity
+                log_stream << std::setw(10) << " Li_vel" << std::setw(5) << new_linear_velocity
+                            << std::setw(10) << " Angular" << std::setw(5) << new_angular_velocity
                             << std::setw(10) << " D_rpm" << std::setw(5) << desired_rpm_left_ << " " << std::setw(5) << desired_rpm_right_
                             << std::setw(10) << " R_rpm" << std::setw(5) << actual_RPM_L << " " << std::setw(5) << actual_RPM_R
                             << std::setw(10) << " pwm" << std::setw(5) << pwm_left << " " << std::setw(5) << pwm_right
@@ -543,7 +543,7 @@ private:
                 BoolTturnsOnTheSpot = true;
             }
 
-            new_linear_velocity =  0.1; 
+            new_linear_velocity =  0.02; 
 
             if ( angular_velocity > 0 )                        //  Left
             {
