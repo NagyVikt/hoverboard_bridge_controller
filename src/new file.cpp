@@ -280,7 +280,7 @@ private:
 
             // Publish to the ROS topic
         std_msgs::msg::String log_msg;
-        log_msg.data = log_file.str();
+        log_msg.data = log_file_.str();
         log_publisher_->publish(log_msg);
     }
 
