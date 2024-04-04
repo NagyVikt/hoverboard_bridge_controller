@@ -477,14 +477,14 @@ private:
             if(new_linear_velocity != 0.0 || actual_RPM_L !=0 ||actual_RPM_R!=0 || pwm_left!=0 || pwm_right!=0 ||  error_left_RPM!=0 ||error_right_RPM!=0 ) {
                 // Format the log message first
                 std::ostringstream log_stream;
-                log_stream << std::left << std::setw(10) << "Li_vel" << std::setw(5) << new_linear_velocity
-                            << ", Angular: " << new_angular_velocity
-                            << std::setw(10) << "D_rpm" << std::setw(5) << desired_rpm_left_ << " " << std::setw(5) << desired_rpm_right_
-                            << std::setw(10) << "R_rpm" << std::setw(5) << actual_RPM_L << " " << std::setw(5) << actual_RPM_R
-                            << std::setw(10) << "pwm" << std::setw(5) << pwm_left << " " << std::setw(5) << pwm_right
-                            << std::setw(10) << "inc" << std::setw(5) << increment_left << " " << std::setw(5) << increment_right
-                            << std::setw(10) << "Err" << std::setw(5) << error_left_RPM << " " << std::setw(5) << error_right_RPM
-                            << std::setw(10) << "Err%" << std::setw(5) << error_left_RPM_percent << " " << std::setw(5) << error_right_RPM_percent;
+                log_stream << std::left << std::setw(10) << " Li_vel" << std::setw(5) << new_linear_velocity
+                            << std::left << std::setw(10) << " Angular" << std::setw(5) << new_angular_velocity
+                            << std::setw(10) << " D_rpm" << std::setw(5) << desired_rpm_left_ << " " << std::setw(5) << desired_rpm_right_
+                            << std::setw(10) << " R_rpm" << std::setw(5) << actual_RPM_L << " " << std::setw(5) << actual_RPM_R
+                            << std::setw(10) << " pwm" << std::setw(5) << pwm_left << " " << std::setw(5) << pwm_right
+                            << std::setw(10) << " inc" << std::setw(5) << increment_left << " " << std::setw(5) << increment_right
+                            << std::setw(10) << " Err" << std::setw(5) << error_left_RPM << " " << std::setw(5) << error_right_RPM
+                            << std::setw(10) << " Err%" << std::setw(5) << error_left_RPM_percent << " " << std::setw(5) << error_right_RPM_percent;
 
 
 
