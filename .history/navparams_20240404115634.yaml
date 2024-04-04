@@ -29,7 +29,7 @@ amcl:
     save_pose_rate: 0.5
     sigma_hit: 0.2
     tf_broadcast: true
-    transform_tolerance: 0.25
+    transform_tolerance: 0.35
     update_min_a: 0.2
     update_min_d: 0.25
     z_hit: 0.5
@@ -136,7 +136,7 @@ controller_server:
     # Progress checker parameters
     progress_checker:
       plugin: "nav2_controller::SimpleProgressChecker"
-      required_movement_radius: 0.05 #nekem 0.1
+      required_movement_radius: 0.2 #nekem 0.1
       movement_time_allowance: 15.0
     # Goal checker parameters
     #precise_goal_checker:
@@ -147,35 +147,35 @@ controller_server:
     general_goal_checker:
       stateful: True
       plugin: "nav2_controller::SimpleGoalChecker"
-      xy_goal_tolerance: 0.65
-      yaw_goal_tolerance: 0.65
+      xy_goal_tolerance: 0.45
+      yaw_goal_tolerance: 0.45
     # DWB parameters
     FollowPath:
       plugin: "dwb_core::DWBLocalPlanner"
       debug_trajectory_details: True
-      min_vel_x: 0.0
+      min_vel_x: -0.25
       min_vel_y: 0.0
       max_vel_x: 0.25
       max_vel_y: 0.0
-      max_vel_theta: 1.0
-      min_speed_xy: 0.0
+      max_vel_theta: 3.0
+      min_speed_xy: -0.25
       max_speed_xy: 0.25
-      min_speed_theta: 0.0
+      min_speed_theta: -0.3
       # Add high threshold velocity for turtlebot 3 issue.
       # https://github.com/ROBOTIS-GIT/turtlebot3_simulations/issues/75
-      acc_lim_x: 1.5
+      acc_lim_x: 2.0
       acc_lim_y: 0.0
-      acc_lim_theta: 3.0
+      acc_lim_theta: 2.0
       decel_lim_x: -1.5
       decel_lim_y: 0.0
-      decel_lim_theta: -3.5
-      vx_samples: 100
-      vy_samples: 0
-      vtheta_samples: 100
+      decel_lim_theta: -1.5
+      vx_samples: 20
+      vy_samples: 5
+      vtheta_samples: 20
       sim_time: 1.7
       linear_granularity: 0.05
       angular_granularity: 0.025
-      transform_tolerance: 0.25
+      transform_tolerance: 0.35
       xy_goal_tolerance: 0.35
       trans_stopped_velocity: 0.35
       short_circuit_trajectory_evaluation: True
@@ -185,19 +185,18 @@ controller_server:
       PathAlign.scale: 32.0
       PathAlign.forward_point_distance: 0.1
       GoalAlign.scale: 24.0
-      GoalAlign.forward_point_distance: 0.1    max_accel: [1.5, 0.0, 2.0]
-    max_decel: [-1.5, 0.0, -2.0]
+      GoalAlign.forward_point_distance: 0.1
       PathDist.scale: 32.0
       GoalDist.scale: 24.0
       RotateToGoal.scale: 32.0
-      RotateToGoal.slowing_factor: 10.0
+      RotateToGoal.slowing_factor: 5.0
       RotateToGoal.lookahead_time: -1.0
 
 local_costmap:
   local_costmap:
     ros__parameters:
  
-      update_frequency: 10.0
+      update_frequency: 5.0
       publish_frequency: 2.0
       global_frame: odom
       robot_base_frame: base_link
@@ -239,7 +238,7 @@ local_costmap:
 global_costmap:
   global_costmap:
     ros__parameters:
-      update_frequency: 5.0
+      update_frequency: 1.0
       publish_frequency: 1.0
       global_frame: map
 
@@ -325,7 +324,7 @@ behavior_server:
     local_frame: odom
     global_frame: map
     robot_base_frame: base_link
-    transform_tolerance: 0.25
+    transform_tolerance: 0.35
     simulate_ahead_time: 2.0
     max_rotational_vel: 1.0
     min_rotational_vel: 0.4
@@ -347,13 +346,13 @@ velocity_smoother:
     smoothing_frequency: 17.0
     scale_velocities: False
     feedback: "OPEN_LOOP"
-    max_velocity: [0.25, 0.0, 1.0]
-    min_velocity: [0.0, 0.0, 0.0]
+    max_velocity: [0.25, 0.0, 0.25]
+    min_velocity: [-0.25, 0.0, -0.25]
     max_accel: [1.5, 0.0, 2.0]
     max_decel: [-1.5, 0.0, -2.0]
     odom_topic: "odom"
     odom_duration: 0.1
-    deadband_velocity: [0.0, 0.0, 0.0]
+    deadband_velocity: [-0.04, 0.0, 0.04]
     velocity_timeout: 1.0
 
 collision_monitor:
@@ -363,7 +362,7 @@ collision_monitor:
     cmd_vel_in_topic: "cmd_vel_smoothed"
     cmd_vel_out_topic: "cmd_vel"
     state_topic: "collision_monitor_state"
-    transform_tolerance: 0.25
+    transform_tolerance: 0.35
     source_timeout: 1.0
     base_shift_correction: True
     stop_pub_timeout: 2.0
