@@ -276,12 +276,6 @@ private:
         log_file_ << '.' << std::setfill('0') << std::setw(3) << now_ms.count();
         log_file_ << std::setfill('0') << std::setw(3) << now_ns.count();
         log_file_ << ": " << message << std::endl;
-
-
-            // Publish to the ROS topic
-        std_msgs::msg::String log_msg;
-        log_msg.data = log_stream.str();
-        log_publisher_->publish(log_msg);
     }
 
 

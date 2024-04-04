@@ -105,7 +105,7 @@ public:
         shutdownHoverboard();
         cmd_left_publisher_->on_activate();
         cmd_right_publisher_->on_activate();
-        bridge_feedback_publisher_->on_activate();
+        log_publisher_->on_activate();
         return CallbackReturn::SUCCESS;
     }
 
@@ -114,7 +114,7 @@ public:
         shutdownHoverboard();
         cmd_left_publisher_->on_deactivate();
         cmd_right_publisher_->on_deactivate();
-        bridge_feedback_publisher_->on_deactivate();
+        log_publisher_->on_deactivate();
 
         return CallbackReturn::SUCCESS;
     }
@@ -127,7 +127,7 @@ public:
         feedback_subscriber_.reset();
         cmd_left_publisher_.reset();
         cmd_right_publisher_.reset();
-        bridge_feedback_publisher_.reset();
+        log_publisher_.reset();
 
         return CallbackReturn::SUCCESS;
     }
@@ -167,7 +167,7 @@ public:
             this->create_publisher<std_msgs::msg::Int32>("cmd_right", 10);
 
 
-        bridge_feedback_publisher_ = this->create_publisher<std_msgs::msg::String>("bridge_feedback", 10);
+        log_publisher_ = this->create_publisher<std_msgs::msg::String>("bridge_feedback", 10);
 
         return CallbackReturn::SUCCESS;
     }
@@ -276,6 +276,12 @@ private:
         log_file_ << '.' << std::setfill('0') << std::setw(3) << now_ms.count();
         log_file_ << std::setfill('0') << std::setw(3) << now_ns.count();
         log_file_ << ": " << message << std::endl;
+
+
+            // Publish to the ROS topic
+        std_msgs::msg::String log_msg;
+        log_msg.data = log_stream.str();
+        log_publisher_->publish(log_msg);
     }
 
 
@@ -485,7 +491,6 @@ private:
 
                 feedback_msg.data = log_message;
 
-                bridge_feedback_publisher_->publish(feedback_msg);
 
                 // Use the formatted message for both RCLCPP_INFO and logInfo
                 RCLCPP_INFO(this->get_logger(), "%s", log_message.c_str()); // ROS console logging
@@ -663,7 +668,7 @@ private:
     rclcpp_lifecycle::LifecyclePublisher<std_msgs::msg::Int32>::SharedPtr
         cmd_right_publisher_;
 
-    rclcpp_lifecycle::LifecyclePublisher<std_msgs::msg::String>::SharedPtr bridge_feedback_publisher_;
+    rclcpp_lifecycle::LifecyclePublisher<std_msgs::msg::String>::SharedPtr log_publisher_;
 };
 
 int main(int argc, char **argv) {
