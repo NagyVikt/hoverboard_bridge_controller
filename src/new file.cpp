@@ -41,8 +41,7 @@ class HoverboardBridge : public rclcpp_lifecycle::LifecycleNode {
 public:
     HoverboardBridge() : rclcpp_lifecycle::LifecycleNode("hoverboard_bridge") {
 
-        pwm_values_left.fill(0); // Kezdeti értékek nullára állítása
-        pwm_values_right.fill(0); // Kezdeti értékek nullára állítása
+   
         // Open a log file in append mode
         log_file_.open("hoverboard_bridgelog.txt", std::ios::out);
         if (log_file_.is_open()) {
@@ -82,10 +81,7 @@ public:
         if (log_file2_.is_open()) {
             //logInfo2("Node shutting down");
             log_file2_.close();
-
         }
-
-
     }
 
         // Explicit shutdown function
@@ -180,8 +176,7 @@ private:
 
 
     std_msgs::msg::String feedback_msg;
-    std::array<int, 10> pwm_values_left; // Az utolsó 10 pwm érték a bal kerekekhez
-    std::array<int, 10> pwm_values_right; // Az utolsó 10 pwm érték a jobb kerekekhez
+
 
     std::ostringstream ss;
     size_t pwm_index; // Az aktuális index a körkörös tömbhöz
@@ -342,7 +337,7 @@ private:
         // Ensure the temporarily adjusted PWM values are within the allowed range
         temp_pwmL = std::clamp(temp_pwmL, min_pwm_value, max_pwm_value);
         temp_pwmR = std::clamp(temp_pwmR, min_pwm_value, max_pwm_value);
-/*
+
         if (linear_velocity_ > 0) //&& std::abs(angular_velocity_)<Turn_on_Spot ) 
         {
         // Moving forward
@@ -355,7 +350,7 @@ private:
         } else {
             desired_pwmL  =  temp_pwmL;
             desired_pwmR  =  temp_pwmR;
-        }*/
+        }
     }
 
 
@@ -378,7 +373,7 @@ private:
         // Adjust PWM based on errors and new_linear_velocity
         if (new_linear_velocity > LINEAR_VELOCITY_THRESHOLD) {
                         // Azonnali "rúgás" a mozgás elindításához, ha még nem érte el a minimális értéket                                 
-            if (std::abs(desired_pwmL) < minimumPwmb && std::abs(new_angular_velocity) < Turn_on_Spot)
+           if (std::abs(desired_pwmL) < minimumPwmb && std::abs(new_angular_velocity) < Turn_on_Spot)
             {        
                 if (desired_rpm_left_ < 0) 
                 { 
@@ -497,30 +492,11 @@ private:
                 logInfo(log_message); // File logging
             }
 
-            // Pwm averager start....
-            pwm_values_left[pwm_index] = intDesired_pwmL;
-            pwm_values_right[pwm_index] = intDesired_pwmR;
-
-            // Az index növelése, és ha elérjük a tömb végét, visszaállítjuk az elejére
-            pwm_index = (pwm_index + 1) % pwm_values_left.size();
-
-
-            // Inside your function, after updating pwm_values_left and pwm_values_right
-            long long sum_left = std::accumulate(pwm_values_left.begin(), pwm_values_left.end(), 0LL); // Use 0LL as the initial sum value to ensure long long calculation
-            long long sum_right = std::accumulate(pwm_values_right.begin(), pwm_values_right.end(), 0LL);
-
-            int avg_left = static_cast<int>(sum_left / static_cast<long long>(pwm_values_left.size()));
-            int avg_right = static_cast<int>(sum_right / static_cast<long long>(pwm_values_right.size()));
-
-            left_wheel_msg.data = avg_left;
-            right_wheel_msg.data = avg_right;           
+       
+            left_wheel_msg.data = intDesired_pwmL;
+            right_wheel_msg.data = intDesired_pwmR;           
            
-            // End pwm averager....
-            if(testMode && (new_linear_velocity != 0.0 || actual_RPM_L !=0 ||actual_RPM_R!=0 || pwm_left!=0 ||increment_right!=0 || error_left_RPM!=0 ||error_right_RPM!=0 )) {
-
-                //RCLCPP_INFO(this->get_logger(), "pwm averages   %d  \t %d", avg_left ,avg_right);
-            }
-
+    
             if (new_linear_velocity == 0 && std::abs(new_angular_velocity) < Turn_on_Spot) 
             {
                 resetWheelCompensation();
@@ -544,22 +520,10 @@ private:
         //logInfo("STEP 1 (calculateDesiredRPM): Calculating desired RPM. Linear vel: " + std::to_string(linear_velocity) + ", Angular vel: " + std::to_string(angular_velocity));
         
         double v_left = 0;
-        double v_right = 0;
-        
-        /*
-        if (std::abs(linear_velocity) < LINEAR_VELOCITY_THRESHOLD && std::abs(angular_velocity) >= Turn_on_Spot) 
-        {
-            linear_velocity =  0.1;  // (new_angular_velocity > 0) ? 0.1 : -0.1; // Set a minimum linear velocity for rotation
-            v_left = 1;
-            v_right = 1;
+        double v_right = 0;     
 
-        }else
-        {            v_left = linear_velocity - ((angular_velocity /( 1 / linear_velocity)) * wheel_base_width_ / 2.0);
-            v_right = linear_velocity + ((angular_velocity /( 1 / linear_velocity)) * wheel_base_width_ / 2.0);
-        }
-        */
         if (std::abs(angular_velocity) > Turn_on_Spot)       //  turn around in palcae
-        {   
+        {   /*
             if ( !BoolTturnsOnTheSpot )
             {
                 desired_rpm_left = 0;
@@ -588,7 +552,7 @@ private:
 
                 error_left_RPM = desired_rpm_left - actual_RPM_L;
                 error_right_RPM = desired_rpm_right - actual_RPM_R;
-            }        
+            }    */    
         }
         else
         {
@@ -605,8 +569,11 @@ private:
             
             if ( std::abs(linear_velocity) > LINEAR_VELOCITY_THRESHOLD )
             {
-                v_left = linear_velocity - ((angular_velocity /( 1 / linear_velocity)) * wheel_base_width_ / 2.0);
-                v_right = linear_velocity + ((angular_velocity /( 1 / linear_velocity)) * wheel_base_width_ / 2.0);
+                //v_left = linear_velocity - ((angular_velocity /( 1 / linear_velocity)) * wheel_base_width_ / 2.0);
+                //v_right = linear_velocity + ((angular_velocity /( 1 / linear_velocity)) * wheel_base_width_ / 2.0);
+
+                v_left = linear_velocity - (angular_velocity * wheel_base_width_ / 2.0);
+                v_right = linear_velocity + (angular_velocity * wheel_base_width_ / 2.0);
 
                 if (linear_velocity > LINEAR_VELOCITY_THRESHOLD )
                 {
