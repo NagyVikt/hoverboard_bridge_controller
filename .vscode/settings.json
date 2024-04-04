@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.py": "python",
+        "sstream": "cpp",
+        "regex": "cpp",
+        "array": "cpp",
+        "string": "cpp",
+        "string_view": "cpp"
+    }
+}
