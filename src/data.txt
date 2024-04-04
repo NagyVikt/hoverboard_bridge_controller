@@ -1,0 +1,190 @@
+] [INFO] [1708428380.716506392] [hoverboard_bridge]: Received feedback: pwmL: 130, pwmR: -116, SpeedR: -36, SpeedL: 30
+[bridge_node-5] [INFO] [1708428380.716686450] [hoverboard_bridge]: Starting to parse feedback data.
+[bridge_node-5] [INFO] [1708428380.718835793] [hoverboard_bridge]: Successfully parsed feedback data: pwmL=130, pwmR=-116, SpeedR=-36, SpeedL=30
+[bridge_node-5] [INFO] [1708428380.718911466] [hoverboard_bridge]: Adjusting PWM based on feedback. Error Left: 33.703400, Error Right: 33.703400
+[bridge_node-5] [INFO] [1708428380.718953371] [hoverboard_bridge]: Adjusting PWM for error. Left error: 33.703400, Right error: 33.703400
+[bridge_node-5] [INFO] [1708428380.718982415] [hoverboard_bridge]: Adjusted PWM values: Left=130.111020, Right=-116.629660
+[bridge_node-5] [INFO] [1708428380.719014393] [hoverboard_bridge]: Publishing PWM - Left: 130.111020, Right: -116.629660
+[bridge_node-5] [INFO] [1708428380.719127299] [hoverboard_bridge]: Feedback processed. Adjusted PWM - Left: 130.111020, Right: -116.629660
+[bridge_node-5] [INFO] [1708428380.735023347] [hoverboard_bridge]: Received feedback: pwmL: 130, pwmR: -116, SpeedR: -36, SpeedL: 30
+[bridge_node-5] [INFO] [1708428380.735126407] [hoverboard_bridge]: Starting to parse feedback data.
+[bridge_node-5] [INFO] [1708428380.737301033] [hoverboard_bridge]: Successfully parsed feedback data: pwmL=130, pwmR=-116, SpeedR=-36, SpeedL=30
+[bridge_node-5] [INFO] [1708428380.737378496] [hoverboard_bridge]: Adjusting PWM based on feedback. Error Left: 33.703400, Error Right: 33.703400
+[bridge_node-5] [INFO] [1708428380.737421754] [hoverboard_bridge]: Adjusting PWM for error. Left error: 33.703400, Right error: 33.703400
+[bridge_node-5] [INFO] [1708428380.737454491] [hoverboard_bridge]: Adjusted PWM values: Left=133.481360, Right=-113.259320
+[bridge_node-5] [INFO] [1708428380.737486916] [hoverboard_bridge]: Publishing PWM - Left: 133.481360, Right: -113.259320
+[bridge_node-5] [INFO] [1708428380.737596128] [hoverboard_bridge]: Feedback processed. Adjusted PWM - Left: 133.481360, Right: -113.259320
+[bridge_node-5] [INFO] [1708428380.753933523] [hoverboard_bridge]: Received feedback: pwmL: 130, pwmR: -116, SpeedR: -36, SpeedL: 32
+[bridge_node-5] [INFO] [1708428380.754037467] [hoverboard_bridge]: Starting to parse feedback data.
+[bridge_node-5] [INFO] [1708428380.756258054] [hoverboard_bridge]: Successfully parsed feedback data: pwmL=130, pwmR=-116, SpeedR=-36, SpeedL=32
+[bridge_node-5] [INFO] [1708428380.756353998] [hoverboard_bridge]: Adjusting PWM based on feedback. Error Left: 33.703400, Error Right: 33.703400
+[bridge_node-5] [INFO] [1708428380.756417043] [hoverboard_bridge]: Adjusting PWM for error. Left error: 33.703400, Right error: 33.703400
+[bridge_node-5] [INFO] [1708428380.756460113] [hoverboard_bridge]: Adjusted PWM values: Left=136.851700, Right=-109.888980
+[bridge_node-5] [INFO] [1708428380.756505010] [hoverboard_bridge]: Publishing PWM - Left: 136.851700, Right: -109.888980
+[bridge_node-5] [INFO] [1708428380.756647220] [hoverboard_bridge]: Feedback processed. Adjusted PWM - Left: 136.851700, Right: -109.888980
+[bridge_node-5] [INFO] [1708428380.771231727] [hoverboard_bridge]: Received cmd_vel. Linear: 0.300000, Angular: 0.000000
+[bridge_node-5] [INFO] [1708428380.771353894] [hoverboard_bridge]: Converting twist to PWM. Linear vel: 0.300000, Angular vel: 0.000000
+[bridge_node-5] [INFO] [1708428380.771382115] [hoverboard_bridge]: Converted PWM values: Left=120.000000, Right=120.000000
+[bridge_node-5] [INFO] [1708428380.771409720] [hoverboard_bridge]: Calculating desired RPM. Linear vel: 0.300000, Angular vel: 0.000000
+[bridge_node-5] [INFO] [1708428380.771430931] [hoverboard_bridge]: Desired RPMs: Left=33.703400, Right=33.703400
+[bridge_node-5] [INFO] [1708428380.771460312] [hoverboard_bridge]: Publishing PWM - Left: 120.000000, Right: 120.000000
+[bridge_node-5] [INFO] [1708428380.771574505] [hoverboard_bridge]: cmd_vel processed. Published initial PWM - Left: 120.000000, Right: 120.000000
+[bridge_node-5] [INFO] [1708428380.771704672] [hoverboard_bridge]: Received feedback: pwmL: 130, pwmR: -116, SpeedR: -40, SpeedL: 32
+[bridge_node-5] [INFO] [1708428380.771738038] [hoverboard_bridge]: Starting to parse feedback data.
+[bridge_node-5] [INFO] [1708428380.774006881] [hoverboard_bridge]: Successfully parsed feedback data: pwmL=130, pwmR=-116, SpeedR=-40, SpeedL=32
+[bridge_node-5] [INFO] [1708428380.774088173] [hoverboard_bridge]: Adjusting PWM based on feedback. Error Left: 33.703400, Error Right: 33.703400
+[bridge_node-5] [INFO] [1708428380.774132498] [hoverboard_bridge]: Adjusting PWM for error. Left error: 33.703400, Right error: 33.703400
+[bridge_node-5] [INFO] [1708428380.774221065] [hoverboard_bridge]: Adjusted PWM values: Left=123.370340, Right=-123.370340
+[bridge_node-5] [INFO] [1708428380.774262901] [hoverboard_bridge]: Publishing PWM - Left: 123.370340, Right: -123.370340
+[bridge_node-5] [INFO] [1708428380.774347660] [hoverboard_bridge]: Feedback processed. Adjusted PWM - Left: 123.370340, Right: -123.370340
+[bridge_node-5] [INFO] [1708428380.789545393] [hoverboard_bridge]: Received feedback: pwmL: 130, pwmR: -116, SpeedR: -40, SpeedL: 32
+[bridge_node-5] [INFO] [1708428380.789676200] [hoverboard_bridge]: Starting to parse feedback data.
+[bridge_node-5] [INFO] [1708428380.791845788] [hoverboard_bridge]: Successfully parsed feedback data: pwmL=130, pwmR=-116, SpeedR=-40, SpeedL=32
+[bridge_node-5] [INFO] [1708428380.791927041] [hoverboard_bridge]: Adjusting PWM based on feedback. Error Left: 33.703400, Error Right: 33.703400
+[bridge_node-5] [INFO] [1708428380.791970031] [hoverboard_bridge]: Adjusting PWM for error. Left error: 33.703400, Right error: 33.703400
+[bridge_node-5] [INFO] [1708428380.792000439] [hoverboard_bridge]: Adjusted PWM values: Left=126.740680, Right=-120.000000
+[bridge_node-5] [INFO] [1708428380.792030910] [hoverboard_bridge]: Publishing PWM - Left: 126.740680, Right: -120.000000
+[bridge_node-5] [INFO] [1708428380.792141312] [hoverboard_bridge]: Feedback processed. Adjusted PWM - Left: 126.740680, Right: -120.000000
+[bridge_node-5] [INFO] [1708428380.807975960] [hoverboard_bridge]: Received feedback: pwmL: 130, pwmR: -116, SpeedR: -40, SpeedL: 36
+[bridge_node-5] [INFO] [1708428380.808074961] [hoverboard_bridge]: Starting to parse feedback data.
+[bridge_node-5] [INFO] [1708428380.810254890] [hoverboard_bridge]: Successfully parsed feedback data: pwmL=130, pwmR=-116, SpeedR=-40, SpeedL=36
+[bridge_node-5] [INFO] [1708428380.810374843] [hoverboard_bridge]: Adjusting PWM based on feedback. Error Left: 33.703400, Error Right: 33.703400
+[bridge_node-5] [INFO] [1708428380.810422679] [hoverboard_bridge]: Adjusting PWM for error. Left error: 33.703400, Right error: 33.703400
+[bridge_node-5] [INFO] [1708428380.810452648] [hoverboard_bridge]: Adjusted PWM values: Left=130.111020, Right=-116.629660
+[bridge_node-5] [INFO] [1708428380.810484525] [hoverboard_bridge]: Publishing PWM - Left: 130.111020, Right: -116.629660
+[bridge_node-5] [INFO] [1708428380.810585536] [hoverboard_bridge]: Feedback processed. Adjusted PWM - Left: 130.111020, Right: -116.629660
+[bridge_node-5] [INFO] [1708428380.827258170] [hoverboard_bridge]: Received feedback: pwmL: 130, pwmR: -116, SpeedR: -40, SpeedL: 36
+[bridge_node-5] [INFO] [1708428380.827365068] [hoverboard_bridge]: Starting to parse feedback data.
+[bridge_node-5] [INFO] [1708428380.829470360] [hoverboard_bridge]: Successfully parsed feedback data: pwmL=130, pwmR=-116, SpeedR=-40, SpeedL=36
+[bridge_node-5] [INFO] [1708428380.829545139] [hoverboard_bridge]: Adjusting PWM based on feedback. Error Left: 33.703400, Error Right: 33.703400
+[bridge_node-5] [INFO] [1708428380.829587787] [hoverboard_bridge]: Adjusting PWM for error. Left error: 33.703400, Right error: 33.703400
+[bridge_node-5] [INFO] [1708428380.829616527] [hoverboard_bridge]: Adjusted PWM values: Left=133.481360, Right=-113.259320
+[bridge_node-5] [INFO] [1708428380.829649012] [hoverboard_bridge]: Publishing PWM - Left: 133.481360, Right: -113.259320
+[bridge_node-5] [INFO] [1708428380.829812919] [hoverboard_bridge]: Feedback processed. Adjusted PWM - Left: 133.481360, Right: -113.259320
+[bridge_node-5] [INFO] [1708428380.860215744] [hoverboard_bridge]: Received feedback: pwmL: 120, pwmR: 120, SpeedR: -42, SpeedL: 49
+[bridge_node-5] [INFO] [1708428380.860323472] [hoverboard_bridge]: Starting to parse feedback data.
+[bridge_node-5] [INFO] [1708428380.862612283] [hoverboard_bridge]: Successfully parsed feedback data: pwmL=120, pwmR=120, SpeedR=-42, SpeedL=49
+[bridge_node-5] [INFO] [1708428380.862725317] [hoverboard_bridge]: Adjusting PWM based on feedback. Error Left: 33.703400, Error Right: 33.703400
+[bridge_node-5] [INFO] [1708428380.862786050] [hoverboard_bridge]: Adjusting PWM for error. Left error: 33.703400, Right error: 33.703400
+[bridge_node-5] [INFO] [1708428380.862815753] [hoverboard_bridge]: Adjusted PWM values: Left=136.851700, Right=-109.888980
+[bridge_node-5] [INFO] [1708428380.862847904] [hoverboard_bridge]: Publishing PWM - Left: 136.851700, Right: -109.888980
+[bridge_node-5] [INFO] [1708428380.862962701] [hoverboard_bridge]: Feedback processed. Adjusted PWM - Left: 136.851700, Right: -109.888980
+[bridge_node-5] [INFO] [1708428380.871232064] [hoverboard_bridge]: Received cmd_vel. Linear: 0.300000, Angular: 0.000000
+[bridge_node-5] [INFO] [1708428380.871439981] [hoverboard_bridge]: Converting twist to PWM. Linear vel: 0.300000, Angular vel: 0.000000
+[bridge_node-5] [INFO] [1708428380.871482395] [hoverboard_bridge]: Converted PWM values: Left=120.000000, Right=120.000000
+[bridge_node-5] [INFO] [1708428380.871517602] [hoverboard_bridge]: Calculating desired RPM. Linear vel: 0.300000, Angular vel: 0.000000
+[bridge_node-5] [INFO] [1708428380.871539936] [hoverboard_bridge]: Desired RPMs: Left=33.703400, Right=33.703400
+[bridge_node-5] [INFO] [1708428380.871569077] [hoverboard_bridge]: Publishing PWM - Left: 120.000000, Right: 120.000000
+[bridge_node-5] [INFO] [1708428380.871676229] [hoverboard_bridge]: cmd_vel processed. Published initial PWM - Left: 120.000000, Right: 120.000000
+[bridge_node-5] [INFO] [1708428380.896231749] [hoverboard_bridge]: Received feedback: pwmL: 120, pwmR: 120, SpeedR: -43, SpeedL: 49
+[bridge_node-5] [INFO] [1708428380.896341912] [hoverboard_bridge]: Starting to parse feedback data.
+[bridge_node-5] [INFO] [1708428380.898632808] [hoverboard_bridge]: Successfully parsed feedback data: pwmL=120, pwmR=120, SpeedR=-43, SpeedL=49
+[bridge_node-5] [INFO] [1708428380.898718593] [hoverboard_bridge]: Adjusting PWM based on feedback. Error Left: 33.703400, Error Right: 33.703400
+[bridge_node-5] [INFO] [1708428380.898761168] [hoverboard_bridge]: Adjusting PWM for error. Left error: 33.703400, Right error: 33.703400
+[bridge_node-5] [INFO] [1708428380.898790125] [hoverboard_bridge]: Adjusted PWM values: Left=123.370340, Right=-123.370340
+[bridge_node-5] [INFO] [1708428380.898821049] [hoverboard_bridge]: Publishing PWM - Left: 123.370340, Right: -123.370340
+[bridge_node-5] [INFO] [1708428380.898933541] [hoverboard_bridge]: Feedback processed. Adjusted PWM - Left: 123.370340, Right: -123.370340
+[bridge_node-5] [INFO] [1708428380.913495753] [hoverboard_bridge]: Received feedback: pwmL: 120, pwmR: 120, SpeedR: -43, SpeedL: 51
+[bridge_node-5] [INFO] [1708428380.913605797] [hoverboard_bridge]: Starting to parse feedback data.
+[bridge_node-5] [INFO] [1708428380.915874896] [hoverboard_bridge]: Successfully parsed feedback data: pwmL=120, pwmR=120, SpeedR=-43, SpeedL=51
+[bridge_node-5] [INFO] [1708428380.915963321] [hoverboard_bridge]: Adjusting PWM based on feedback. Error Left: 33.703400, Error Right: 33.703400
+[bridge_node-5] [INFO] [1708428380.916006667] [hoverboard_bridge]: Adjusting PWM for error. Left error: 33.703400, Right error: 33.703400
+[bridge_node-5] [INFO] [1708428380.916036985] [hoverboard_bridge]: Adjusted PWM values: Left=126.740680, Right=-120.000000
+[bridge_node-5] [INFO] [1708428380.916066748] [hoverboard_bridge]: Publishing PWM - Left: 126.740680, Right: -120.000000
+[bridge_node-5] [INFO] [1708428380.916178402] [hoverboard_bridge]: Feedback processed. Adjusted PWM - Left: 126.740680, Right: -120.000000
+[bridge_node-5] [INFO] [1708428380.933250685] [hoverboard_bridge]: Received feedback: pwmL: 126, pwmR: -120, SpeedR: -44, SpeedL: 51
+[bridge_node-5] [INFO] [1708428380.933356866] [hoverboard_bridge]: Starting to parse feedback data.
+[bridge_node-5] [INFO] [1708428380.935538211] [hoverboard_bridge]: Successfully parsed feedback data: pwmL=126, pwmR=-120, SpeedR=-44, SpeedL=51
+[bridge_node-5] [INFO] [1708428380.935618561] [hoverboard_bridge]: Adjusting PWM based on feedback. Error Left: 33.703400, Error Right: 33.703400
+[bridge_node-5] [INFO] [1708428380.935660857] [hoverboard_bridge]: Adjusting PWM for error. Left error: 33.703400, Right error: 33.703400
+[bridge_node-5] [INFO] [1708428380.935690166] [hoverboard_bridge]: Adjusted PWM values: Left=130.111020, Right=-116.629660
+[bridge_node-5] [INFO] [1708428380.935722333] [hoverboard_bridge]: Publishing PWM - Left: 130.111020, Right: -116.629660
+[bridge_node-5] [INFO] [1708428380.935831492] [hoverboard_bridge]: Feedback processed. Adjusted PWM - Left: 130.111020, Right: -116.629660
+[bridge_node-5] [INFO] [1708428380.950588372] [hoverboard_bridge]: Received feedback: pwmL: 126, pwmR: -120, SpeedR: -44, SpeedL: 51
+[bridge_node-5] [INFO] [1708428380.950696936] [hoverboard_bridge]: Starting to parse feedback data.
+[bridge_node-5] [INFO] [1708428380.952841938] [hoverboard_bridge]: Successfully parsed feedback data: pwmL=126, pwmR=-120, SpeedR=-44, SpeedL=51
+[bridge_node-5] [INFO] [1708428380.952928924] [hoverboard_bridge]: Adjusting PWM based on feedback. Error Left: 33.703400, Error Right: 33.703400
+[bridge_node-5] [INFO] [1708428380.952972422] [hoverboard_bridge]: Adjusting PWM for error. Left error: 33.703400, Right error: 33.703400
+[bridge_node-5] [INFO] [1708428380.953001478] [hoverboard_bridge]: Adjusted PWM values: Left=133.481360, Right=-113.259320
+[bridge_node-5] [INFO] [1708428380.953097524] [hoverboard_bridge]: Publishing PWM - Left: 133.481360, Right: -113.259320
+[bridge_node-5] [INFO] [1708428380.953220599] [hoverboard_bridge]: Feedback processed. Adjusted PWM - Left: 133.481360, Right: -113.259320
+[bridge_node-5] [INFO] [1708428380.971485045] [hoverboard_bridge]: Received cmd_vel. Linear: 0.300000, Angular: 0.000000
+[bridge_node-5] [INFO] [1708428380.971606567] [hoverboard_bridge]: Converting twist to PWM. Linear vel: 0.300000, Angular vel: 0.000000
+[bridge_node-5] [INFO] [1708428380.971634595] [hoverboard_bridge]: Converted PWM values: Left=120.000000, Right=120.000000
+[bridge_node-5] [INFO] [1708428380.971662439] [hoverboard_bridge]: Calculating desired RPM. Linear vel: 0.300000, Angular vel: 0.000000
+[bridge_node-5] [INFO] [1708428380.971684162] [hoverboard_bridge]: Desired RPMs: Left=33.703400, Right=33.703400
+[bridge_node-5] [INFO] [1708428380.971713479] [hoverboard_bridge]: Publishing PWM - Left: 120.000000, Right: 120.000000
+[bridge_node-5] [INFO] [1708428380.971814341] [hoverboard_bridge]: cmd_vel processed. Published initial PWM - Left: 120.000000, Right: 120.000000
+[bridge_node-5] [INFO] [1708428380.993129732] [hoverboard_bridge]: Received feedback: pwmL: 130, pwmR: -116, SpeedR: -41, SpeedL: 53
+[bridge_node-5] [INFO] [1708428380.993243039] [hoverboard_bridge]: Starting to parse feedback data.
+[bridge_node-5] [INFO] [1708428380.995597663] [hoverboard_bridge]: Successfully parsed feedback data: pwmL=130, pwmR=-116, SpeedR=-41, SpeedL=53
+[bridge_node-5] [INFO] [1708428380.995675168] [hoverboard_bridge]: Adjusting PWM based on feedback. Error Left: 33.703400, Error Right: 33.703400
+[bridge_node-5] [INFO] [1708428380.995716137] [hoverboard_bridge]: Adjusting PWM for error. Left error: 33.703400, Right error: 33.703400
+[bridge_node-5] [INFO] [1708428380.995745553] [hoverboard_bridge]: Adjusted PWM values: Left=123.370340, Right=-123.370340
+[bridge_node-5] [INFO] [1708428380.995776880] [hoverboard_bridge]: Publishing PWM - Left: 123.370340, Right: -123.370340
+[bridge_node-5] [INFO] [1708428380.995884021] [hoverboard_bridge]: Feedback processed. Adjusted PWM - Left: 123.370340, Right: -123.370340
+[bridge_node-5] [INFO] [1708428381.010453691] [hoverboard_bridge]: Received feedback: pwmL: 126, pwmR: -120, SpeedR: -41, SpeedL: 54
+[bridge_node-5] [INFO] [1708428381.010548412] [hoverboard_bridge]: Starting to parse feedback data.
+[bridge_node-5] [INFO] [1708428381.012758862] [hoverboard_bridge]: Successfully parsed feedback data: pwmL=126, pwmR=-120, SpeedR=-41, SpeedL=54
+[bridge_node-5] [INFO] [1708428381.012842375] [hoverboard_bridge]: Adjusting PWM based on feedback. Error Left: 33.703400, Error Right: 33.703400
+[bridge_node-5] [INFO] [1708428381.012887434] [hoverboard_bridge]: Adjusting PWM for error. Left error: 33.703400, Right error: 33.703400
+[bridge_node-5] [INFO] [1708428381.012917708] [hoverboard_bridge]: Adjusted PWM values: Left=126.740680, Right=-120.000000
+[bridge_node-5] [INFO] [1708428381.012947529] [hoverboard_bridge]: Publishing PWM - Left: 126.740680, Right: -120.000000
+[bridge_node-5] [INFO] [1708428381.013050281] [hoverboard_bridge]: Feedback processed. Adjusted PWM - Left: 126.740680, Right: -120.000000
+[bridge_node-5] [INFO] [1708428381.029020535] [hoverboard_bridge]: Received feedback: pwmL: 126, pwmR: -120, SpeedR: -41, SpeedL: 54
+[bridge_node-5] [INFO] [1708428381.029130451] [hoverboard_bridge]: Starting to parse feedback data.
+[bridge_node-5] [INFO] [1708428381.031254449] [hoverboard_bridge]: Successfully parsed feedback data: pwmL=126, pwmR=-120, SpeedR=-41, SpeedL=54
+[bridge_node-5] [INFO] [1708428381.031331412] [hoverboard_bridge]: Adjusting PWM based on feedback. Error Left: 33.703400, Error Right: 33.703400
+[bridge_node-5] [INFO] [1708428381.031375607] [hoverboard_bridge]: Adjusting PWM for error. Left error: 33.703400, Right error: 33.703400
+[bridge_node-5] [INFO] [1708428381.031405875] [hoverboard_bridge]: Adjusted PWM values: Left=130.111020, Right=-116.629660
+[bridge_node-5] [INFO] [1708428381.031436949] [hoverboard_bridge]: Publishing PWM - Left: 130.111020, Right: -116.629660
+[bridge_node-5] [INFO] [1708428381.031563880] [hoverboard_bridge]: Feedback processed. Adjusted PWM - Left: 130.111020, Right: -116.629660
+[bridge_node-5] [INFO] [1708428381.046416058] [hoverboard_bridge]: Received feedback: pwmL: 126, pwmR: -120, SpeedR: -43, SpeedL: 55
+[bridge_node-5] [INFO] [1708428381.046525241] [hoverboard_bridge]: Starting to parse feedback data.
+[bridge_node-5] [INFO] [1708428381.048694062] [hoverboard_bridge]: Successfully parsed feedback data: pwmL=126, pwmR=-120, SpeedR=-43, SpeedL=55
+[bridge_node-5] [INFO] [1708428381.048831278] [hoverboard_bridge]: Adjusting PWM based on feedback. Error Left: 33.703400, Error Right: 33.703400
+[bridge_node-5] [INFO] [1708428381.048882046] [hoverboard_bridge]: Adjusting PWM for error. Left error: 33.703400, Right error: 33.703400
+[bridge_node-5] [INFO] [1708428381.048912704] [hoverboard_bridge]: Adjusted PWM values: Left=133.481360, Right=-113.259320
+[bridge_node-5] [INFO] [1708428381.048945473] [hoverboard_bridge]: Publishing PWM - Left: 133.481360, Right: -113.259320
+[bridge_node-5] [INFO] [1708428381.049051574] [hoverboard_bridge]: Feedback processed. Adjusted PWM - Left: 133.481360, Right: -113.259320
+[bridge_node-5] [INFO] [1708428381.065107788] [hoverboard_bridge]: Received feedback: pwmL: 126, pwmR: -120, SpeedR: -43, SpeedL: 55
+[bridge_node-5] [INFO] [1708428381.065237597] [hoverboard_bridge]: Starting to parse feedback data.
+[bridge_node-5] [INFO] [1708428381.067405243] [hoverboard_bridge]: Successfully parsed feedback data: pwmL=126, pwmR=-120, SpeedR=-43, SpeedL=55
+[bridge_node-5] [INFO] [1708428381.067491098] [hoverboard_bridge]: Adjusting PWM based on feedback. Error Left: 33.703400, Error Right: 33.703400
+[bridge_node-5] [INFO] [1708428381.067535297] [hoverboard_bridge]: Adjusting PWM for error. Left error: 33.703400, Right error: 33.703400
+[bridge_node-5] [INFO] [1708428381.067565034] [hoverboard_bridge]: Adjusted PWM values: Left=136.851700, Right=-109.888980
+[bridge_node-5] [INFO] [1708428381.067596584] [hoverboard_bridge]: Publishing PWM - Left: 136.851700, Right: -109.888980
+[bridge_node-5] [INFO] [1708428381.067726792] [hoverboard_bridge]: Feedback processed. Adjusted PWM - Left: 136.851700, Right: -109.888980
+[bridge_node-5] [INFO] [1708428381.070933261] [hoverboard_bridge]: Received cmd_vel. Linear: 0.300000, Angular: 0.000000
+[bridge_node-5] [INFO] [1708428381.071036829] [hoverboard_bridge]: Converting twist to PWM. Linear vel: 0.300000, Angular vel: 0.000000
+[bridge_node-5] [INFO] [1708428381.071081222] [hoverboard_bridge]: Converted PWM values: Left=120.000000, Right=120.000000
+[bridge_node-5] [INFO] [1708428381.071111079] [hoverboard_bridge]: Calculating desired RPM. Linear vel: 0.300000, Angular vel: 0.000000
+[bridge_node-5] [INFO] [1708428381.071132478] [hoverboard_bridge]: Desired RPMs: Left=33.703400, Right=33.703400
+[bridge_node-5] [INFO] [1708428381.071161191] [hoverboard_bridge]: Publishing PWM - Left: 120.000000, Right: 120.000000
+[bridge_node-5] [INFO] [1708428381.071249882] [hoverboard_bridge]: cmd_vel processed. Published initial PWM - Left: 120.000000, Right: 120.000000
+[bridge_node-5] [INFO] [1708428381.083261092] [hoverboard_bridge]: Received feedback: pwmL: 126, pwmR: -120, SpeedR: -43, SpeedL: 55
+[bridge_node-5] [INFO] [1708428381.083371703] [hoverboard_bridge]: Starting to parse feedback data.
+[bridge_node-5] [INFO] [1708428381.085470566] [hoverboard_bridge]: Successfully parsed feedback data: pwmL=126, pwmR=-120, SpeedR=-43, SpeedL=55
+[bridge_node-5] [INFO] [1708428381.085544083] [hoverboard_bridge]: Adjusting PWM based on feedback. Error Left: 33.703400, Error Right: 33.703400
+[bridge_node-5] [INFO] [1708428381.085585531] [hoverboard_bridge]: Adjusting PWM for error. Left error: 33.703400, Right error: 33.703400
+[bridge_node-5] [INFO] [1708428381.085613661] [hoverboard_bridge]: Adjusted PWM values: Left=123.370340, Right=-123.370340
+[bridge_node-5] [INFO] [1708428381.085645638] [hoverboard_bridge]: Publishing PWM - Left: 123.370340, Right: -123.370340
+[bridge_node-5] [INFO] [1708428381.085800375] [hoverboard_bridge]: Feedback processed. Adjusted PWM - Left: 123.370340, Right: -123.370340
+[bridge_node-5] [INFO] [1708428381.113239528] [hoverboard_bridge]: Received feedback: pwmL: 120, pwmR: 120, SpeedR: -48, SpeedL: 55
+[bridge_node-5] [INFO] [1708428381.113351885] [hoverboard_bridge]: Starting to parse feedback data.
+[bridge_node-5] [INFO] [1708428381.115549518] [hoverboard_bridge]: Successfully parsed feedback data: pwmL=120, pwmR=120, SpeedR=-48, SpeedL=55
+[bridge_node-5] [INFO] [1708428381.115634780] [hoverboard_bridge]: Adjusting PWM based on feedback. Error Left: 33.703400, Error Right: 33.703400
+[bridge_node-5] [INFO] [1708428381.115677133] [hoverboard_bridge]: Adjusting PWM for error. Left error: 33.703400, Right error: 33.703400
+[bridge_node-5] [INFO] [1708428381.115706155] [hoverboard_bridge]: Adjusted PWM values: Left=126.740680, Right=-120.000000
+[bridge_node-5] [INFO] [1708428381.115736076] [hoverboard_bridge]: Publishing PWM - Left: 126.740680, Right: -120.000000
+[bridge_node-5] [INFO] [1708428381.115847313] [hoverboard_bridge]: Feedback processed. Adjusted PWM - Left: 126.740680, Right: -120.000000
+[bridge_node-5] [INFO] [1708428381.130566799] [hoverboard_bridge]: Received feedback: pwmL: 120, pwmR: 120, SpeedR: -48, SpeedL: 56
+[bridge_node-5] [INFO] [1708428381.130694177] [hoverboard_bridge]: Starting to parse feedback data.
+[bridge_node-5] [INFO] [1708428381.132787810] [hoverboard_bridge]: Successfully parsed feedback data: pwmL=120, pwmR=120, SpeedR=-48, SpeedL=56
+[bridge_node-5] [INFO] [1708428381.132855335] [hoverboard_bridge]: Adjusting PWM based on feedback. Error Left: 33.703400, Error Right: 33.703400
+[bridge_node-5] [INFO] [1708428381.132897389] [hoverboard_bridge]: Adjusting PWM for error. Left error: 33.703400, Right error: 33.703400
+[bridge_node-5] [INFO] [1708428381.132926157] [hoverboard_bridge]: Adjusted PWM values: Left=130.111020, Right=-116.629660
+[bridge_node-5] [INFO] [1708428381.132958270] [hoverboard_bridge]: Publishing PWM - Left: 130.111020, Right: -116.629660
+[bridge_node-5] [INFO] [1708428381.133064206] [hoverboard_bridge]: Feedback processed. Adjusted PWM - Left: 130.111020, Right: -116.629660
+[bridge_node-5] [INFO] [1708428381.149255016] [hoverboard_bridge]: Received feedback: pwmL: 120, pwmR: 120, SpeedR: -48, SpeedL: 56
+[bridge_node-5] [INFO] [1708428381.149365411] [hoverboard_bridge]: Starting to parse feedback data.
