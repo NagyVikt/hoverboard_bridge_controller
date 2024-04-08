@@ -220,7 +220,7 @@ private:
     double new_angular_velocity;
     const int MIN_PWM = -500;  // Adjust this value based on your hardware limits
     const int MAX_PWM = 500;   // Adjust this value based on your hardware limits
-    const int turn_on_spot_speed_RPM = 11; // RPM
+    int turn_on_spot_speed_RPM = 11; // RPM
 
     int intDesired_pwmL = 0;
     int intDesired_pwmR = 0;
@@ -367,7 +367,6 @@ private:
         parseFeedbackData(msg->data, feedback);
 
         adjustPWMBasedOnFeedback();
-
         feedback_received_ = true;
 
         last_effective_pwmL = feedback.pwmL;
@@ -493,6 +492,8 @@ private:
         {   
     
             resetWheelCompensation();
+
+            turn_on_spot_speed_RPM = 93.518 * std::abs(angular_velocity);   
                     
             desired_rpm_left = turn_on_spot_speed_RPM;
             desired_rpm_right = turn_on_spot_speed_RPM;
