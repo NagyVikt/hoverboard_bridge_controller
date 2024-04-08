@@ -220,7 +220,7 @@ private:
     double new_angular_velocity;
     const int MIN_PWM = -500;  // Adjust this value based on your hardware limits
     const int MAX_PWM = 500;   // Adjust this value based on your hardware limits
-    const int turn_on_spot_speed_RPM = 20; // RPM
+    const int turn_on_spot_speed_RPM = 11; // RPM
 
     int intDesired_pwmL = 0;
     int intDesired_pwmR = 0;
@@ -229,9 +229,9 @@ private:
     double last_effective_pwmL = 0;
     double last_effective_pwmR = 0;
 
-    double damping_factor = 0.2; // Adjust this value to control the damping effect
+    double damping_factor = 0.9; // Adjust this value to control the damping effect
 
-    int minimumPwmb = 41;
+    int minimumPwmb = 45;
 
     double wheel_base_width_;
     double wheel_radius_;
@@ -379,6 +379,24 @@ private:
         // Adjust PWM based on errors and new_linear_velocity
         if (new_linear_velocity > LINEAR_VELOCITY_THRESHOLD) {
                         // Azonnali "rúgás" a mozgás elindításához, ha még nem érte el a minimális értéket                                 
+           if (std::abs(desired_pwmL) < minimumPwmb && std::abs(new_angular_velocity) < Turn_on_Spot)
+            {        
+                if (desired_rpm_left_ < 0) 
+                { 
+                    desired_pwmL = -minimumPwmb;
+                }else{
+                    desired_pwmL = minimumPwmb;
+                }
+            }
+            if (std::abs(desired_pwmR) < minimumPwmb && std::abs(new_angular_velocity) < Turn_on_Spot)
+            {
+                if (desired_rpm_right_ < 0) 
+                { 
+                    desired_pwmR = -minimumPwmb;
+                }else{
+                    desired_pwmR = minimumPwmb;
+                }
+            }
             // Moving forward
             // desired_pwmL = 70;
             // desired_pwmR = -70;
@@ -388,6 +406,22 @@ private:
            
         } else if (new_linear_velocity < -LINEAR_VELOCITY_THRESHOLD) 
         {         
+            if (std::abs(desired_pwmL) < minimumPwmb && std::abs(new_angular_velocity) < Turn_on_Spot)
+            {
+                if (desired_rpm_left_ < 0) {
+                    desired_pwmL = minimumPwmb;
+                }else{
+                    desired_pwmL = -minimumPwmb;
+                }
+            }
+            if (std::abs(desired_pwmR) < minimumPwmb && std::abs(new_angular_velocity) < Turn_on_Spot)
+            {  
+                if (desired_rpm_right_ < 0) {
+                    desired_pwmR = minimumPwmb;
+                }else{
+                    desired_pwmR = -minimumPwmb;
+                }                
+            }              
             // desired_pwmL = -70;
             // desired_pwmR = 70;
             // Moving backward
@@ -401,8 +435,6 @@ private:
             desired_pwmR = 0;
             resetWheelCompensation();
         }
-
-
         // Finally, publish the adjusted PWM values
         publishPWM(desired_pwmL, desired_pwmR);
     }
@@ -499,19 +531,49 @@ private:
 
         if (std::abs(linear_velocity) < LINEAR_VELOCITY_THRESHOLD  &&  std::abs(angular_velocity) > ANGULAR_VELOCITY_THRESHOLD )         //  turn around in palcae
         {   
-    
-            resetWheelCompensation();
-                    
-            desired_rpm_left = turn_on_spot_speed_RPM;
-            desired_rpm_right = turn_on_spot_speed_RPM;
+            if ( !BoolTturnsOnTheSpot )
+            {
+                desired_rpm_left = 0;
+                desired_rpm_right = 0;
 
-            error_left_RPM = desired_rpm_left - actual_RPM_L;
-            error_right_RPM = desired_rpm_right - actual_RPM_R;
-            
+                resetWheelCompensation();
+
+                //RCLCPP_INFO(this->get_logger(), "\033[32m Turns on the spot \033[0m");  
+
+                BoolTturnsOnTheSpot = true;
+            }
+
+            new_linear_velocity =  0.; 
+
+            if ( angular_velocity > 0 )                        //  Left
+            {
+                desired_rpm_left = -turn_on_spot_speed_RPM;
+                desired_rpm_right = -turn_on_spot_speed_RPM;
+
+                error_left_RPM = desired_rpm_left - actual_RPM_L;
+                error_right_RPM = desired_rpm_right - actual_RPM_R;
+            }else                                             //  Right
+            {            
+                desired_rpm_left = turn_on_spot_speed_RPM;
+                desired_rpm_right = turn_on_spot_speed_RPM;
+
+                error_left_RPM = desired_rpm_left - actual_RPM_L;
+                error_right_RPM = desired_rpm_right - actual_RPM_R;
+            }    
         }
         else
         {
-  
+            if ( BoolTturnsOnTheSpot )   //  finished  turn around in palcae
+            {         
+                desired_rpm_left = 0;
+                desired_rpm_right = 0;
+
+                resetWheelCompensation();
+
+                //RCLCPP_INFO(this->get_logger(), "\033[32m Turns in a circular arc \033[0m");   
+                BoolTturnsOnTheSpot = false;         
+            }
+            
             if ( std::abs(linear_velocity) > LINEAR_VELOCITY_THRESHOLD )
             {
                 //v_left = linear_velocity - ((angular_velocity /( 1 / linear_velocity)) * wheel_base_width_ / 2.0);

@@ -65,7 +65,7 @@ public:
         this->declare_parameter<double>("wheel_radius",
                                         0.085); // Wheel radius in meters
 
-        this->declare_parameter<double>("kP", 0.1);  // Default value of 0.1
+        this->declare_parameter<double>("kP", 0.01);  // Default value of 0.1
 
 
 
@@ -220,7 +220,7 @@ private:
     double new_angular_velocity;
     const int MIN_PWM = -500;  // Adjust this value based on your hardware limits
     const int MAX_PWM = 500;   // Adjust this value based on your hardware limits
-    const int turn_on_spot_speed_RPM = 20; // RPM
+    const int turn_on_spot_speed_RPM = 11; // RPM
 
     int intDesired_pwmL = 0;
     int intDesired_pwmR = 0;
@@ -229,9 +229,9 @@ private:
     double last_effective_pwmL = 0;
     double last_effective_pwmR = 0;
 
-    double damping_factor = 0.2; // Adjust this value to control the damping effect
+    double damping_factor = 0.05; // Adjust this value to control the damping effect
 
-    int minimumPwmb = 41;
+    int minimumPwmb = 11;
 
     double wheel_base_width_;
     double wheel_radius_;
@@ -379,6 +379,24 @@ private:
         // Adjust PWM based on errors and new_linear_velocity
         if (new_linear_velocity > LINEAR_VELOCITY_THRESHOLD) {
                         // Azonnali "rúgás" a mozgás elindításához, ha még nem érte el a minimális értéket                                 
+           if (std::abs(desired_pwmL) < minimumPwmb && std::abs(new_angular_velocity) < Turn_on_Spot)
+            {        
+                if (desired_rpm_left_ < 0) 
+                { 
+                    desired_pwmL = -minimumPwmb;
+                }else{
+                    desired_pwmL = minimumPwmb;
+                }
+            }
+            if (std::abs(desired_pwmR) < minimumPwmb && std::abs(new_angular_velocity) < Turn_on_Spot)
+            {
+                if (desired_rpm_right_ < 0) 
+                { 
+                    desired_pwmR = -minimumPwmb;
+                }else{
+                    desired_pwmR = minimumPwmb;
+                }
+            }
             // Moving forward
             // desired_pwmL = 70;
             // desired_pwmR = -70;
@@ -388,6 +406,22 @@ private:
            
         } else if (new_linear_velocity < -LINEAR_VELOCITY_THRESHOLD) 
         {         
+            if (std::abs(desired_pwmL) < minimumPwmb && std::abs(new_angular_velocity) < Turn_on_Spot)
+            {
+                if (desired_rpm_left_ < 0) {
+                    desired_pwmL = minimumPwmb;
+                }else{
+                    desired_pwmL = -minimumPwmb;
+                }
+            }
+            if (std::abs(desired_pwmR) < minimumPwmb && std::abs(new_angular_velocity) < Turn_on_Spot)
+            {  
+                if (desired_rpm_right_ < 0) {
+                    desired_pwmR = minimumPwmb;
+                }else{
+                    desired_pwmR = -minimumPwmb;
+                }                
+            }              
             // desired_pwmL = -70;
             // desired_pwmR = 70;
             // Moving backward
@@ -401,6 +435,8 @@ private:
             desired_pwmR = 0;
             resetWheelCompensation();
         }
+
+
 
 
         // Finally, publish the adjusted PWM values
