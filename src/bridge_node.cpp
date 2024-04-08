@@ -672,7 +672,7 @@ private:
         cmd_right_publisher_;
 
     rclcpp_lifecycle::LifecyclePublisher<std_msgs::msg::String>::SharedPtr log_publisher_;
-};
+}; 
 
 int main(int argc, char **argv) {
   rclcpp::init(argc, argv);
