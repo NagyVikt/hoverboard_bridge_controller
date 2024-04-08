@@ -231,7 +231,7 @@ private:
 
     double damping_factor = 0.1; // Adjust this value to control the damping effect
 
-    int minimumPwmb = 45;
+    int minimumPwmb = 7;
 
     double wheel_base_width_;
     double wheel_radius_;
@@ -543,12 +543,12 @@ private:
                 BoolTturnsOnTheSpot = true;
             }
 
-            new_linear_velocity =  0.02; 
+            //new_linear_velocity =  0.02; 
 
             turn_on_spot_speed_RPM = 93.518 * std::abs(angular_velocity);       
-            RCLCPP_INFO(this->get_logger(), "turn_on_spot_speed_RPM  %0.2f"  , 
+            /*RCLCPP_INFO(this->get_logger(), "turn_on_spot_speed_RPM  %0.2f"  , 
             turn_on_spot_speed_RPM );      
-
+*/
             if ( angular_velocity > 0 )                        //  Left
             {
                 desired_rpm_left = -turn_on_spot_speed_RPM;
@@ -607,12 +607,12 @@ private:
                     error_right_RPM_percent = (desired_rpm_right + actual_RPM_R) / (desired_rpm_right/100) ;               
                 }
             }
-            else
+           /* else
             {
                 desired_rpm_left = 0;
                 desired_rpm_right = 0;
                 resetWheelCompensation();
-            }
+            }*/
         }
 
         //desired_rpm_left = (v_left / (2.0 * M_PI * wheel_radius_)) * 60.0;
