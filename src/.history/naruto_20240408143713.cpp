@@ -543,7 +543,7 @@ private:
                 BoolTturnsOnTheSpot = true;
             }
 
-            new_linear_velocity =  0.15; 
+            new_linear_velocity =  0.; 
 
             if ( angular_velocity > 0 )                        //  Left
             {
