@@ -220,7 +220,7 @@ private:
     double new_angular_velocity;
     const int MIN_PWM = -500;  // Adjust this value based on your hardware limits
     const int MAX_PWM = 500;   // Adjust this value based on your hardware limits
-    const int turn_on_spot_speed_RPM = 11; // RPM
+    const int turn_on_spot_speed_RPM = 20; // RPM
 
     int intDesired_pwmL = 0;
     int intDesired_pwmR = 0;
