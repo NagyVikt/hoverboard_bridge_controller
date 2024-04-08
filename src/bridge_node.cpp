@@ -181,6 +181,7 @@ private:
     std::ostringstream ss;
     size_t pwm_index; // Az aktuális index a körkörös tömbhöz
 
+
         // Variables to control dynamic adjustments
     double current_kP = LOW_KP;
     int current_sampling_rate_ms = SLOW_SAMPLING_RATE_MS;
