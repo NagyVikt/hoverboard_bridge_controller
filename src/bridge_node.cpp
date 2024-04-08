@@ -428,13 +428,13 @@ private:
 
             desired_pwmL -= kP * error_left_RPM * damping_factor;
             desired_pwmR -= kP * error_right_RPM * damping_factor;          
-        } else {
+        } /*else {
             // Stop
             
             desired_pwmL = 0;
             desired_pwmR = 0;
             resetWheelCompensation();
-        }
+        }*/
         // Finally, publish the adjusted PWM values
         publishPWM(desired_pwmL, desired_pwmR);
     }
@@ -543,7 +543,7 @@ private:
                 BoolTturnsOnTheSpot = true;
             }
 
-            new_linear_velocity =  0.02; 
+            //new_linear_velocity =  0.02; 
 
             turn_on_spot_speed_RPM = 93.518 * std::abs(angular_velocity);       
             RCLCPP_INFO(this->get_logger(), "turn_on_spot_speed_RPM  %0.2f"  , 
