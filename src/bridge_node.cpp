@@ -231,7 +231,7 @@ private:
 
     double damping_factor = 0.1; // Adjust this value to control the damping effect
 
-    int minimumPwmb = 7;
+    int minimumPwmb = 1;
 
     double wheel_base_width_;
     double wheel_radius_;
@@ -524,9 +524,10 @@ private:
             right_wheel_msg.data = intDesired_pwmR;           
            
     
-            if (new_linear_velocity < LINEAR_VELOCITY_THRESHOLD && new_angular_velocity < ANGULAR_VELOCITY_THRESHOLD ) 
+            if (std::abs(new_linear_velocity) < LINEAR_VELOCITY_THRESHOLD && std::abs(new_angular_velocity) < ANGULAR_VELOCITY_THRESHOLD ) 
             {
                 resetWheelCompensation();
+               
                 left_wheel_msg.data = 0;
                 right_wheel_msg.data = 0;    
             }
@@ -565,7 +566,7 @@ private:
 
             new_linear_velocity =  0.02; 
 
-            turn_on_spot_speed_RPM = 93.518 * std::abs(angular_velocity);       
+            turn_on_spot_speed_RPM = 28 * std::abs(angular_velocity);       
             RCLCPP_INFO(this->get_logger(), "turn_on_spot_speed_RPM  %0.2f"  , 
             turn_on_spot_speed_RPM );      
 
