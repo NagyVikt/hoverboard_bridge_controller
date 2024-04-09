@@ -203,7 +203,7 @@ private:
 
     const double LINEAR_VELOCITY_THRESHOLD = 0.01; // Adjust as needed
     const double ANGULAR_VELOCITY_THRESHOLD = 0.01; // Adjust as needed
-    const double Turn_on_Spot = 2.9; // Adjust as needed
+    //const double Turn_on_Spot = 2.9; // Adjust as needed
     bool initial_publish_ = true;
     bool feedback_received_ = false; // Flag to indicate feedback received
     double increment_left = 0;
@@ -378,8 +378,8 @@ private:
    void adjustPWMBasedOnFeedback() {    
         // Adjust PWM based on errors and new_linear_velocity
         if (new_linear_velocity > LINEAR_VELOCITY_THRESHOLD) {
-                        // Azonnali "rúgás" a mozgás elindításához, ha még nem érte el a minimális értéket                                 
-           if (std::abs(desired_pwmL) < minimumPwmb && std::abs(new_angular_velocity) < Turn_on_Spot)
+                                                  
+           if (std::abs(desired_pwmL) < minimumPwmb )
             {        
                 if (desired_rpm_left_ < 0) 
                 { 
@@ -388,7 +388,7 @@ private:
                     desired_pwmL = minimumPwmb;
                 }
             }
-            if (std::abs(desired_pwmR) < minimumPwmb && std::abs(new_angular_velocity) < Turn_on_Spot)
+            if (std::abs(desired_pwmR) < minimumPwmb )
             {
                 if (desired_rpm_right_ < 0) 
                 { 
@@ -406,7 +406,7 @@ private:
            
         } else if (new_linear_velocity < -LINEAR_VELOCITY_THRESHOLD) 
         {         
-            if (std::abs(desired_pwmL) < minimumPwmb && std::abs(new_angular_velocity) < Turn_on_Spot)
+            if (std::abs(desired_pwmL) < minimumPwmb )
             {
                 if (desired_rpm_left_ < 0) {
                     desired_pwmL = minimumPwmb;
@@ -414,7 +414,7 @@ private:
                     desired_pwmL = -minimumPwmb;
                 }
             }
-            if (std::abs(desired_pwmR) < minimumPwmb && std::abs(new_angular_velocity) < Turn_on_Spot)
+            if (std::abs(desired_pwmR) < minimumPwmb )
             {  
                 if (desired_rpm_right_ < 0) {
                     desired_pwmR = minimumPwmb;
@@ -422,12 +422,32 @@ private:
                     desired_pwmR = -minimumPwmb;
                 }                
             }              
-            // desired_pwmL = -70;
-            // desired_pwmR = 70;
-            // Moving backward
 
             desired_pwmL -= kP * error_left_RPM * damping_factor;
-            desired_pwmR -= kP * error_right_RPM * damping_factor;          
+            desired_pwmR -= kP * error_right_RPM * damping_factor;    
+
+        } else if (BoolTturnsOnTheSpot)
+        {
+            if (std::abs(desired_pwmL) < minimumPwmb )
+            {        
+                if (desired_rpm_left_ < 0) 
+                { 
+                    desired_pwmL = -minimumPwmb;
+                }else{
+                    desired_pwmL = minimumPwmb;
+                }
+            }
+            if (std::abs(desired_pwmR) < minimumPwmb )
+            {
+                if (desired_rpm_right_ < 0) 
+                { 
+                    desired_pwmR = -minimumPwmb;
+                }else{
+                    desired_pwmR = minimumPwmb;
+                }
+            }           
+            desired_pwmL += kP * error_left_RPM * damping_factor;           
+            desired_pwmR += kP * error_right_RPM * damping_factor;
         } else {
             // Stop
             
@@ -504,7 +524,7 @@ private:
             right_wheel_msg.data = intDesired_pwmR;           
            
     
-            if (new_linear_velocity == 0 && std::abs(new_angular_velocity) < Turn_on_Spot) 
+            if (new_linear_velocity < LINEAR_VELOCITY_THRESHOLD && new_angular_velocity < ANGULAR_VELOCITY_THRESHOLD ) 
             {
                 resetWheelCompensation();
                 left_wheel_msg.data = 0;
@@ -543,12 +563,12 @@ private:
                 BoolTturnsOnTheSpot = true;
             }
 
-            //new_linear_velocity =  0.02; 
+            new_linear_velocity =  0.02; 
 
             turn_on_spot_speed_RPM = 93.518 * std::abs(angular_velocity);       
-            /*RCLCPP_INFO(this->get_logger(), "turn_on_spot_speed_RPM  %0.2f"  , 
+            RCLCPP_INFO(this->get_logger(), "turn_on_spot_speed_RPM  %0.2f"  , 
             turn_on_spot_speed_RPM );      
-*/
+
             if ( angular_velocity > 0 )                        //  Left
             {
                 desired_rpm_left = -turn_on_spot_speed_RPM;
@@ -607,12 +627,12 @@ private:
                     error_right_RPM_percent = (desired_rpm_right + actual_RPM_R) / (desired_rpm_right/100) ;               
                 }
             }
-           /* else
+            else
             {
                 desired_rpm_left = 0;
                 desired_rpm_right = 0;
                 resetWheelCompensation();
-            }*/
+            }
         }
 
         //desired_rpm_left = (v_left / (2.0 * M_PI * wheel_radius_)) * 60.0;
@@ -672,7 +692,7 @@ private:
         cmd_right_publisher_;
 
     rclcpp_lifecycle::LifecyclePublisher<std_msgs::msg::String>::SharedPtr log_publisher_;
-}; 
+};
 
 int main(int argc, char **argv) {
   rclcpp::init(argc, argv);
