@@ -229,7 +229,7 @@ private:
     double last_effective_pwmL = 0;
     double last_effective_pwmR = 0;
 
-    double damping_factor = 0.1; // Adjust this value to control the damping effect
+    double damping_factor = 0.2; // Adjust this value to control the damping effect
 
     int minimumPwmb = 1;
 
@@ -332,14 +332,14 @@ private:
         // Limit the adjustment to prevent abrupt changes
         adjustment_left  =  std::clamp(adjustment_left, -max_adjustment, max_adjustment);
         adjustment_right  =  std::clamp(adjustment_right, -max_adjustment, max_adjustment);
-        //RCLCPP_INFO(this->get_logger(), " ");
-        //RCLCPP_INFO(this->get_logger(), "adjustment_left -- adjustment_right %0.2f \t %0.2f",adjustment_left,adjustment_right);
+        RCLCPP_INFO(this->get_logger(), " ");
+        RCLCPP_INFO(this->get_logger(), "adjustment_left -- adjustment_right %0.2f \t %0.2f",adjustment_left,adjustment_right);
 
         // Temporarily adjust the PWM values based on the error
         double temp_pwmL  =  desired_pwmL + adjustment_left;
         double temp_pwmR  =  desired_pwmR + adjustment_right;
 
-        //RCLCPP_INFO(this->get_logger(), "temp_pwmR -- temp_pwmL %0.2f \t %0.2f",temp_pwmR,temp_pwmL);
+        RCLCPP_INFO(this->get_logger(), "temp_pwmR -- temp_pwmL %0.2f \t %0.2f",temp_pwmR,temp_pwmL);
         // Ensure the temporarily adjusted PWM values are within the allowed range
         temp_pwmL = std::clamp(temp_pwmL, min_pwm_value, max_pwm_value);
         temp_pwmR = std::clamp(temp_pwmR, min_pwm_value, max_pwm_value);
@@ -515,8 +515,8 @@ private:
 
 
                 // Use the formatted message for both RCLCPP_INFO and logInfo
-                //RCLCPP_INFO(this->get_logger(), "%s", log_message.c_str()); // ROS console logging
-                logInfo(log_message); // File logging
+              //  RCLCPP_INFO(this->get_logger(), "%s", log_message.c_str()); // ROS console logging
+              // logInfo(log_message); // File logging
             }
 
        
@@ -554,8 +554,8 @@ private:
         {   
             if ( !BoolTturnsOnTheSpot )
             {
-                desired_rpm_left = 0;
-                desired_rpm_right = 0;
+                //desired_rpm_left = 0;
+                //desired_rpm_right = 0;
 
                 resetWheelCompensation();
 
@@ -564,11 +564,10 @@ private:
                 BoolTturnsOnTheSpot = true;
             }
 
-            new_linear_velocity =  0.02; 
+            //new_linear_velocity =  0.02; 
 
-            turn_on_spot_speed_RPM = 28 * std::abs(angular_velocity);       
-            //RCLCPP_INFO(this->get_logger(), "turn_on_spot_speed_RPM  %0.2f"  , 
-            turn_on_spot_speed_RPM );      
+            turn_on_spot_speed_RPM = 29 * std::abs(angular_velocity);       
+              
 
             if ( angular_velocity > 0 )                        //  Left
             {
@@ -590,8 +589,8 @@ private:
         {
             if ( BoolTturnsOnTheSpot )   //  finished  turn around in palcae
             {         
-                desired_rpm_left = 0;
-                desired_rpm_right = 0;
+                //desired_rpm_left = 0;
+                //desired_rpm_right = 0;
 
                 resetWheelCompensation();
 
